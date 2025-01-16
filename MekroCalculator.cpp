@@ -11,6 +11,45 @@ double memory = 0;
 double result = 0;
 vector<char> inp;
 
+
+bool hndlerr(){
+    // cout<<"yoooooooooooooooooooooooo";
+    vector <char> tmp;
+    bool correct = true,p = false;
+    int del = 0;
+    tmp = inp;
+    for(int i=tmp.size()-1;i>-1;i--){
+        if(tmp[i] == '('){
+            p = false;
+            for(int j=0;j<tmp.size();j++){
+                if(tmp[j] == ')'){
+                    tmp.erase(tmp.begin()+j);
+                    p = true;
+                    del++;
+                    break;
+                }
+            }
+            if(!p){
+            cout<<"Unexpected '(' on charcter '"<<i+1<<"':"<<"\n\t";
+            correct = false;
+            for(int y = 0;y<inp.size();y++){
+                cout<<inp[y];
+            }
+            cout<<"\n\t";
+            for(int x = 0;x<inp.size();x++){
+                if(x == i){
+                    cout<<'^';
+                    break;
+                }else{
+                    cout<<' ';
+                }
+            }
+            cout<<endl;
+            }
+        }
+    }
+}
+
 int main();
 
 void check(){
