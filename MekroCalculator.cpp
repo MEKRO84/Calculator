@@ -92,6 +92,27 @@ bool hndlerr(){
             }
         }
     }
+        tmp = inp;
+    for(int i = 0;i<tmp.size();i++){
+        if(tmp[i] == '/' && tmp[i+1] == '0'){
+            correct = false;
+            cout<<"You can't divide a number by 0\n\t";
+            for(int y = 0;y<inp.size();y++){
+                    cout<<inp[y];
+                }
+                cout<<"\n\t";
+                for(int x = 0;x<inp.size();x++){
+                    if(x == i){
+                        cout<<'^';
+                        break;
+                    }else{
+                        cout<<' ';
+                    }
+                }
+                cout<<endl;
+        }
+    }
+    return correct;
 }
 
 int main();
