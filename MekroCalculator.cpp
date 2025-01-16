@@ -68,6 +68,30 @@ bool hndlerr(){
 
     }}
 
+   tmp = inp;
+    
+    for(int i = 0;i<tmp.size();i++){
+        if(tmp[i] == '+' || tmp[i] == '-' || tmp[i] == '*' || tmp[i] == '/' ){
+            if(!(((tmp[i-1]<58 && tmp[i-1]>47) || tmp[i-1] == ')' || tmp[i-1] == '(') && ((tmp[i+1]<58 && tmp[i+1]>47) || tmp[i+1] == ')' || tmp[i+1] == '('))){
+                correct = false;
+                cout<<"There is no number before/afetr '"<<tmp[i]<<"' on charcter '"<<i+1<<"':"<<"\n\t";
+                for(int y = 0;y<inp.size();y++){
+                    cout<<inp[y];
+                }
+                cout<<"\n\t";
+                for(int x = 0;x<inp.size();x++){
+                    if(x == i){
+                        cout<<'^';
+                        break;
+                    }else{
+                        cout<<' ';
+                    }
+                }
+                cout<<endl;
+
+            }
+        }
+    }
 }
 
 int main();
