@@ -11,6 +11,56 @@ double memory = 0;
 double result = 0;
 vector<char> inp;
 
+int main();
+
+void check(){
+    string phrase = "",finalphrase = "";
+    char ask;
+    bool correct = false;
+    inp.clear();
+    cout << "Pls enter your phrase\n>> ";
+    cin.clear();
+    // cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin>>ws, phrase);
+    for(int i = 0; i<phrase.length();i++){
+        if((phrase[i]<58 && phrase[i]>47) || phrase[i] == ')' || phrase[i] == '(' || phrase[i] == '+' || phrase[i] == '-' || phrase[i] == '/' || phrase[i] == '*'){
+        inp.push_back(phrase[i]);
+        finalphrase += phrase[i];}
+    }
+    correct = hndlerr();
+    if(correct){
+        calcilate(finalphrase, result);
+        cout<<"Result: '"<<result<<"'\n";
+        memory = result;
+        cout<<"Do you want to continue?(y/n)\n>> ";
+    }else{
+        cout<<"Try again\n";
+        check();
+    }
+    while(true){
+        cin.clear();
+        cin>>ask;
+        if(!cin.fail() && (ask == 'y' || ask == 'Y')){
+            main();
+            break;
+        }else if(!cin.fail() && (ask == 'n' || ask == 'N')){
+            system("cls");
+            cout<<"Have nice time!\n";
+            break;
+        }else if(cin.fail()){
+            cout<<"Wrong input, Try again\n>> ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout<<"Do you want to continue?(y/n)\n>> >> ";
+        }else{
+            cout<<"Invalid input, Try again\n>> ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+
+}
+}
+
 int main(){
     char ask;
     int num;
