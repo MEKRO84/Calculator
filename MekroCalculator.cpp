@@ -10,7 +10,6 @@ using namespace std;
 double memory = 0;
 double result = 0;
 vector<char> inp;
-
 double calcul(double a, double b, char ope){
     if(ope == '+'){
         return a + b;}
@@ -121,7 +120,6 @@ bool calcilate(string phrase, double &result){
     }
 }
 
-
 bool hndlerr(){
     // cout<<"yoooooooooooooooooooooooo";
     vector <char> tmp;
@@ -158,7 +156,8 @@ bool hndlerr(){
             }
         }
     }
-        for(int h = tmp.size()-1;h>0;h--){
+    
+    for(int h = tmp.size()-1;h>0;h--){
         if(tmp[h] == ')'){
             correct = false;
             cout<<"Unexpected ')' on charcter '"<<h+del+1<<"':"<<"\n\t";
@@ -178,7 +177,7 @@ bool hndlerr(){
 
     }}
 
-   tmp = inp;
+    tmp = inp;
     
     for(int i = 0;i<tmp.size();i++){
         if(tmp[i] == '+' || tmp[i] == '-' || tmp[i] == '*' || tmp[i] == '/' ){
@@ -202,7 +201,7 @@ bool hndlerr(){
             }
         }
     }
-        tmp = inp;
+    tmp = inp;
     for(int i = 0;i<tmp.size();i++){
         if(tmp[i] == '/' && tmp[i+1] == '0'){
             correct = false;
