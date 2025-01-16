@@ -11,6 +11,116 @@ double memory = 0;
 double result = 0;
 vector<char> inp;
 
+double calcul(double a, double b, char ope){
+    if(ope == '+'){
+        return a + b;}
+    else if(ope == '-'){
+        return a - b;}
+    else if(ope == '*'){
+        return a * b;}
+    else if(ope == '/'){
+        return a / b;}
+    return 0;
+}
+
+int impo(char ope){
+    if(ope == '+' || ope == '-'){
+        return 1;}
+    else if(ope == '*' || ope == '/'){
+        return 2;}
+    return 0;
+}
+
+bool numfind(char c){
+    if(c >= '0' && c <= '9'){
+        return true;
+    }else{
+        return false;
+    }
+    
+}
+
+bool opdec(char c){
+    if(c == '+' || c == '-' || c == '*' || c == '/'){
+        return true;
+    }else{
+        return false;
+    }
+    
+}
+
+
+bool calcilate(string phrase, double &result){
+    vector<double> numbers;
+    vector<char> opers;
+    bool V = 1;
+    for (int i = 0; i < phrase.length(); i++){
+        if(phrase[i] == ' '){
+            continue;}
+        else if(phrase[i] == '('){
+            opers.push_back(phrase[i]);
+        }else if(numfind(phrase[i]) || phrase[i] == '.'){
+            double sum = 0;
+            int decimal = -1;
+            while (i < phrase.length() && (numfind(phrase[i]) || phrase[i] == '.')){
+                if (phrase[i] == '.'){
+                    decimal = 0;
+                }else{
+                    sum = (sum * 10) + (phrase[i] - '0');
+                    if (decimal >= 0) decimal++;
+                }
+                i++;
+            }
+            if(decimal > 0){
+                sum /= pow(10, decimal);
+            }
+            numbers.push_back(sum);
+            i--;
+        }else if(phrase[i] == ')'){
+            while(!opers.empty() && opers.back() != '('){
+                double sum2 = numbers.back();
+                numbers.pop_back();
+                double sum1 = numbers.back();
+                numbers.pop_back();
+                char ope = opers.back();
+                opers.pop_back();
+                numbers.push_back(calcul(sum1, sum2, ope));
+            }
+            if(!opers.empty()){
+                opers.pop_back();
+            }
+        }else if(opdec(phrase[i])){
+            while(!opers.empty() && impo(opers.back()) >= impo(phrase[i])){
+                double sum2 = numbers.back();
+                numbers.pop_back();
+                double sum1 = numbers.back();
+                numbers.pop_back();
+                char ope = opers.back();
+                opers.pop_back();
+                numbers.push_back(calcul(sum1, sum2, ope));
+            }
+            opers.push_back(phrase[i]);
+        }else{
+            V = false;
+            break;
+        }
+    }while(!opers.empty()){
+        double sum2 = numbers.back();
+        numbers.pop_back();
+        double sum1 = numbers.back();
+        numbers.pop_back();
+        char ope = opers.back();
+        opers.pop_back();
+        numbers.push_back(calcul(sum1, sum2, ope));
+    }
+    if(V){
+        result = numbers.back();
+        return true;
+    }else{
+        return false;
+    }
+}
+
 
 bool hndlerr(){
     // cout<<"yoooooooooooooooooooooooo";
