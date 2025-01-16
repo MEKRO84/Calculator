@@ -48,6 +48,26 @@ bool hndlerr(){
             }
         }
     }
+        for(int h = tmp.size()-1;h>0;h--){
+        if(tmp[h] == ')'){
+            correct = false;
+            cout<<"Unexpected ')' on charcter '"<<h+del+1<<"':"<<"\n\t";
+            for(int y = 0;y<inp.size();y++){
+                cout<<inp[y];
+            }
+            cout<<"\n\t";
+            for(int x = 0;x<inp.size();x++){
+                if(x == h+del){
+                    cout<<'^';
+                    break;
+                }else{
+                    cout<<' ';
+                }
+            }
+            cout<<endl;
+
+    }}
+
 }
 
 int main();
