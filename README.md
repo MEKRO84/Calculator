@@ -6,4 +6,4 @@ This was the last project of the university's first term
 No need for installation just run .exe file or compile it using any compiler you want
 
 ## Bugs
-This program is complete and have no bugs exept for multipling the phrase or number in -1
+This program is complete and have no bugs except for multipling the phrase or number in -1
