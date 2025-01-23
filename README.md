@@ -7,3 +7,6 @@ No need for installation just run .exe file or compile it using any compiler you
 
 ## Bugs
 This program is complete and have no bugs except for multipling the phrase or number in -1
+
+## License
+This project is owned by Matin Keshavarz
